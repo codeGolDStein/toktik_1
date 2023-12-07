@@ -1,53 +1,45 @@
+import 'dart:core';
 import 'dart:math';
+import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
 
-enum topic {
-  Geschichte,
-  Politik,
-  Wirtschaft,
-  Geografie,
-  Anatomie,
-  Gesundheit,
-  Sport,
-  Fitness,
-  Ernaehrung,
-  Astronomie,
-  Technologie,
-  Musik,
-  Kunst,
-}
+class PromptGenerator {
+  late List<String> topics;
 
-String getRandomTopic(){
-  final random = Random();
-  final randomInt = random.nextInt(topic.values.length);
-  String topicString = topic.values[randomInt].toString();
-  return topicString.substring(6, topicString.length);
-}
+  PromptGenerator() {
+    topics = [
+      "Geschichte",
+      "Politik",
+      "Wirtschaft",
+      "Geografie",
+      "Anatomie",
+      "Gesundheit",
+      "Sport",
+      "Fitness",
+      "Ernaehrung",
+      "Astronomie",
+      "Technologie",
+      "Musik",
+      "Kunst",
+    ];
+  }
 
-class Prompt {
+  String getRandomTopic() {
+    final random = Random();
+    final randomInt = random.nextInt(topics.length);
+    String topicString = topics[randomInt].toString();
+    return topicString.substring(6, topicString.length);
+  }
 
-  static getFactText(int length, String language, [String? topic]) {
-
+  String getFactText(int length, String language, [String? topic]) {
     String textTopic;
 
-    if(topic == null){ 
+    if (topic == null) {
       textTopic = getRandomTopic();
-    }else{
+    } else {
       textTopic = topic;
     }
-
-    // return """
-    //   Einzeln:
-
-    //   Schreibe mir einen $length Wörter langen Fakt Text.
-    //   Der Text hat folgende Attribute:
-
-    //   - Thema: $textTopic
-    //   - Sprache: $language
-    //   - Der Text ist Informativ spannend und einfach zu lesen.
-    //   - Der Text muss in Form eines Fakt geschrieben sein. 
-    //     Das soll ein Text sein den man gerne nebenbei liest um sein Allgemein wissen zu verbessern.
-    //   - Gebe Dem Text noch eine Überschrift, diese steht in der ersten
-    //     Zeile deines Outputs """;
 
     return """
       Ich möchte mein Wissen im Thema $textTopic verbessern. Schreibe mir 
@@ -66,7 +58,3 @@ class Prompt {
     return "Dies ist ein Test";
   }
 }
-
-
-
-

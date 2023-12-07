@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "eslint": "^8.55.0"
+  },
+  "dependencies": {
+    "punycode": "^2.3.1"
+  }
+}

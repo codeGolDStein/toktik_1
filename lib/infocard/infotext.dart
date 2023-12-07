@@ -35,4 +35,11 @@ class InfoText {
 
     return [header, text];
   }
+
+    Map<String, dynamic> toJson() {
+    return {
+      'header': header,
+      'text': text,
+    };
+  }
 }
