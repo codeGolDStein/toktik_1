@@ -1,5 +1,4 @@
-// import * as apiModule from "./ChatGptApi.js";
-const apiModule2 = require("ChatGptApi.js");
+const apiModule2 = require("./ChatGptApi.js");
 
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
@@ -15,8 +14,11 @@ exports.myScheduledCloudFunction = functions.pubsub.schedule("* * * * *").
       // Fetching Text from ChatGpt:
       const newInfoTextString = apiModule2.
           fetchFromGpt(promptGenerator.getFactText(75, "German"));
+      console.log("Response: " + newInfoTextString);
       // Converting Test to Class InfoText:
       const newInfoTextData = new apiModule2.InfoText(newInfoTextString);
+      console.log("Header: " + newInfoTextData.header);
+      console.log("Text: " + newInfoTextData.text);
       // Converting Data to Json:
       const newInfoTextJson = newInfoTextData.toJson();
       // Adding Data to Collection
