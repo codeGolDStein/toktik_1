@@ -1,3 +1,97 @@
+const {OpenAI} = require("openai");
+// import OpenAI from "openai";
+
+// const configuration = new Configuration({
+//   apiKey: "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",
+// });
+
+const openai = new OpenAI({
+  apiKey: "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",
+});
+
+// /**
+//  * Fetches data from the GPT API.
+//  * @param {string} message - The message to send to the GPT API.
+//  * @return {Promise<string>} - A promise that resolves
+// to the content received
+//  * from the GPT API.
+//  */
+// async function fetchFromGpt(message) {
+//   try {
+//     const response = await fetch("https://api.openai.com/v1/chat/completions", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         "Authorization":
+//           `Bearer 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`,
+//       },
+//       body: JSON.stringify({
+//         "model": "gpt-3.5-turbo",
+//         "messages": [
+//           {"role": "system", "content": message},
+//         ],
+//         "temperature": 1,
+//       }),
+//     });
+
+//     const jsonResponse = await response.json();
+//     console.log(jsonResponse);
+
+//     if (jsonResponse.error) {
+//       throw new Error(jsonResponse.error.message);
+//     }
+
+//     return jsonResponse.choices[0].message.content;
+//   } catch (error) {
+//     console.error(`error ${error}`);
+//     throw error;
+//   }
+// }
+
+
+/**
+ * Fetches data from the GPT API.
+ * @param {string} message - The message to send to the GPT API.
+ * @return {Promise<string>} - A promise that resolves
+ to the content received
+ * from the GPT API.
+ */
+async function fetchFromGpt(message) {
+  const response = await openai.chat.completions.create({
+    "model": "gpt-3.5-turbo",
+    "messages": [
+      {
+        role: "system",
+        content: message,
+      },
+    ],
+    "temperature": 1,
+  });
+  console.log(response.choices);
+  return response.choices;
+}
+
+
+// import OpenAI from "openai";
+
+// /**
+//  * Fetches data from the GPT API.
+//  * @param {string} message - The message to send to the GPT API.
+//  * @return {Promise<string>} - A promise that resolves
+//  to the content received
+//  * from the GPT API.
+//  */
+// async function fetchFromGpt(message) {
+//   const openai = new OpenAI({
+//     apiKey: process.env.OPENAI_API_KEY,
+//   });
+//   const chatCompletion = await openai.chat.completions.create({
+//       messages: [{ role: "user", content: "Say this is a test" }],
+//       model: "gpt-3.5-turbo",
+//   });
+// }
+
+
 /**
  * Class representing information text.
  */
@@ -141,45 +235,6 @@ class PromptGenerator {
    */
   static getTest() {
     return "Dies ist ein Test";
-  }
-}
-
-
-/**
- * Fetches data from the GPT API.
- * @param {string} message - The message to send to the GPT API.
- * @return {Promise<string>} - A promise that resolves to the content received
- * from the GPT API.
- */
-async function fetchFromGpt(message) {
-  console.log(message);
-  try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization":
-          `Bearer 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`,
-      },
-      body: JSON.stringify({
-        "model": "gpt-3.5-turbo",
-        "messages": [
-          {"role": "system", "content": message},
-        ],
-        "temperature": 1,
-      }),
-    });
-
-    const jsonResponse = await response.json();
-
-    if (jsonResponse.error) {
-      throw new Error(jsonResponse.error.message);
-    }
-
-    return jsonResponse.choices[0].message.content;
-  } catch (error) {
-    console.error(`error ${error}`);
-    throw error;
   }
 }
 
