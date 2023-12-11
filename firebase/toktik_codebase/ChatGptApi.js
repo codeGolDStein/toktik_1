@@ -67,8 +67,8 @@ async function fetchFromGpt(message) {
     ],
     "temperature": 1,
   });
-  console.log(response.choices);
-  return response.choices;
+  console.log(response.choices[0].message.content);
+  return response.choices[0].message.content;
 }
 
 

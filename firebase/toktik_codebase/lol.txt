@@ -37,3 +37,49 @@ exports.myScheduledCloudFunction = functions.pubsub.schedule("* * * * *").
 
       return null;
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       index: 0,
+2023-12-11 16:19:06.031
+myScheduledCloudFunction
+i8mevot7btww
+    message: {
+2023-12-11 16:19:06.031
+myScheduledCloudFunction
+i8mevot7btww
+      role: 'assistant',
+2023-12-11 16:19:06.031
+myScheduledCloudFunction
+i8mevot7btww
+      content: 'Wie Enten die Schurken der Vogelwelt sind\n' +
+2023-12-11 16:19:06.031
+myScheduledCloudFunction
+i8mevot7btww
+        '\n' +
+2023-12-11 16:19:06.031
+myScheduledCloudFunction
+i8mevot7btww
+        'Enten sind in der Vogelwelt für ihre niedlichen Aussehen und ihre charakteristischen Quaklaute bekannt. Doch wussten Sie, dass sie unter all den Vögeln die wahren Schurken sind? Forscher haben herausgefunden, dass Enten einzigartige Fähigkeiten besitzen, um ihre Konkurrenten auszutricksen. Sie können ihre Flügel so schnell bewegen, dass sie Chaos in den Scharen anderer Vögel verursachen und ihnen den Nachwuchs stehlen. Diese Erkenntnis zeigt, dass das unschuldige Aussehen der Enten trügerisch ist und es in der Natur auch Tiere gibt, die keine Heiligen sind.'
+2023-12-11 16:19:06.031
+myScheduledCloudFunction
+i8mevot7btww
+    },
+2023-12-11 16:19:06.031
+myScheduledCloudFunction
+i8mevot7btww
+    finish_reason: '
