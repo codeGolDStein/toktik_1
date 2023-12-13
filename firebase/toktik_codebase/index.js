@@ -17,7 +17,8 @@ exports.myScheduledCloudFunction = functions.pubsub.schedule("* * * * *").
       // console.log("Response: " + newInfoTextString);
       // Converting Test to Class InfoText:
       const newInfoTextData = new apiModule2.InfoText(newInfoTextString);
-      // console.log("Header: " + newInfoTextData.header);
+      console.log(newInfoTextData);
+      console.log("Header: " + newInfoTextData.header);
       // console.log("Text: " + newInfoTextData.text);
       // Converting Data to Json:
       const newInfoTextJson = newInfoTextData.toJson();

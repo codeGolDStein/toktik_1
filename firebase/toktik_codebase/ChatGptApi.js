@@ -121,28 +121,40 @@ class InfoText {
    * header and text separated by a line break.
    * @return {string[]} An array containing header and text.
    */
+  // separateText(prompt) {
+  //   let header = "";
+  //   let text = "";
+  //   let switchHeaderToText = true;
+
+  //   for (let i = 0; i < prompt.length; i++) {
+  //     const char = prompt[i];
+  //     if (char.charCodeAt(0) === 10) { // Line break detection
+  //       switchHeaderToText = false;
+  //       continue;
+  //     } else {
+  //       if (switchHeaderToText) {
+  //         header += char;
+  //       } else {
+  //         text += char;
+  //       }
+  //     }
+  //   }
+
+  //   return [header, text];
+  // }
+
+  /**
+  * Separates the header and text from the given prompt.
+  * @param {string} prompt - The prompt string containing
+  * header and text separated by a line break.
+  * @return {string[]} An array containing header and text.
+  */
   separateText(prompt) {
-    console.log(prompt);
-    let header = "";
-    let text = "";
-    let switchHeaderToText = true;
-
-    for (let i = 0; i < prompt.length; i++) {
-      const char = prompt[i];
-      if (char.charCodeAt(0) === 10) { // Line break detection
-        switchHeaderToText = false;
-        continue;
-      } else {
-        if (switchHeaderToText) {
-          header += char;
-        } else {
-          text += char;
-        }
-      }
-    }
-
-    return [header, text];
+    const [header, ...rest] = prompt.split("\n\n");
+    const content = rest.join("\n").trim();
+    return [header.trim(), content];
   }
+
 
   /**
    * Converts the InfoText instance to JSON format.
