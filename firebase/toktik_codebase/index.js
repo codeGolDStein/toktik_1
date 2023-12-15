@@ -12,14 +12,15 @@ exports.myScheduledCloudFunction = functions.pubsub.schedule("* * * * *").
       // Initializing Prompt Generator:
       const promptGenerator = new apiModule2.PromptGenerator();
       // Fetching Text from ChatGpt:
-      const newInfoTextString = apiModule2.
+      const newInfoTextString = await apiModule2.
           fetchFromGpt(promptGenerator.getFactText(75, "German"));
+      // mit await kann man promises konvertieren
       // console.log("Response: " + newInfoTextString);
       // Converting Test to Class InfoText:
       const newInfoTextData = new apiModule2.InfoText(newInfoTextString);
-      console.log(newInfoTextData);
+      // console.log(newInfoTextData);
       console.log("Header: " + newInfoTextData.header);
-      // console.log("Text: " + newInfoTextData.text);
+      console.log("Text: " + newInfoTextData.text);
       // Converting Data to Json:
       const newInfoTextJson = newInfoTextData.toJson();
       // Adding Data to Collection

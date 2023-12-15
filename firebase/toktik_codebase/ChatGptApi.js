@@ -1,52 +1,10 @@
 const {OpenAI} = require("openai");
-// import OpenAI from "openai";
 
-// const configuration = new Configuration({
-//   apiKey: "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",
-// });
 
 const openai = new OpenAI({
-  apiKey: "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",
+  // apiKey: "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",
+  apiKey: "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",
 });
-
-// /**
-//  * Fetches data from the GPT API.
-//  * @param {string} message - The message to send to the GPT API.
-//  * @return {Promise<string>} - A promise that resolves
-// to the content received
-//  * from the GPT API.
-//  */
-// async function fetchFromGpt(message) {
-//   try {
-//     const response = await fetch("https://api.openai.com/v1/chat/completions", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         "Authorization":
-//           `Bearer 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`,
-//       },
-//       body: JSON.stringify({
-//         "model": "gpt-3.5-turbo",
-//         "messages": [
-//           {"role": "system", "content": message},
-//         ],
-//         "temperature": 1,
-//       }),
-//     });
-
-//     const jsonResponse = await response.json();
-//     console.log(jsonResponse);
-
-//     if (jsonResponse.error) {
-//       throw new Error(jsonResponse.error.message);
-//     }
-
-//     return jsonResponse.choices[0].message.content;
-//   } catch (error) {
-//     console.error(`error ${error}`);
-//     throw error;
-//   }
-// }
 
 
 /**
@@ -70,26 +28,6 @@ async function fetchFromGpt(message) {
   console.log(response.choices[0].message.content);
   return response.choices[0].message.content;
 }
-
-
-// import OpenAI from "openai";
-
-// /**
-//  * Fetches data from the GPT API.
-//  * @param {string} message - The message to send to the GPT API.
-//  * @return {Promise<string>} - A promise that resolves
-//  to the content received
-//  * from the GPT API.
-//  */
-// async function fetchFromGpt(message) {
-//   const openai = new OpenAI({
-//     apiKey: process.env.OPENAI_API_KEY,
-//   });
-//   const chatCompletion = await openai.chat.completions.create({
-//       messages: [{ role: "user", content: "Say this is a test" }],
-//       model: "gpt-3.5-turbo",
-//   });
-// }
 
 
 /**
@@ -116,40 +54,13 @@ class InfoText {
   }
 
   /**
-   * Separates the header and text from the given prompt.
-   * @param {string} prompt - The prompt string containing
-   * header and text separated by a line break.
-   * @return {string[]} An array containing header and text.
-   */
-  // separateText(prompt) {
-  //   let header = "";
-  //   let text = "";
-  //   let switchHeaderToText = true;
-
-  //   for (let i = 0; i < prompt.length; i++) {
-  //     const char = prompt[i];
-  //     if (char.charCodeAt(0) === 10) { // Line break detection
-  //       switchHeaderToText = false;
-  //       continue;
-  //     } else {
-  //       if (switchHeaderToText) {
-  //         header += char;
-  //       } else {
-  //         text += char;
-  //       }
-  //     }
-  //   }
-
-  //   return [header, text];
-  // }
-
-  /**
   * Separates the header and text from the given prompt.
   * @param {string} prompt - The prompt string containing
   * header and text separated by a line break.
   * @return {string[]} An array containing header and text.
   */
   separateText(prompt) {
+    console.log("Prompt: " + prompt);
     const [header, ...rest] = prompt.split("\n\n");
     const content = rest.join("\n").trim();
     return [header.trim(), content];
@@ -167,11 +78,6 @@ class InfoText {
     };
   }
 }
-
-// Example usage:
-// const info = new InfoText("Header\nThis is the text.");
-// console.log(info.toJson());
-
 
 /**
  * Klasse für die Erstellung von Text-Prompts.
