@@ -5,8 +5,8 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
-import 'package:toktik/API/prompt.dart';
-import 'package:toktik/API/api_services.dart';
+import 'package:toktik/OpenAiApi/prompt.dart';
+import 'package:toktik/OpenAiApi/api_services.dart';
 import 'package:toktik/infocard/infotext.dart';
 import 'package:toktik/usefull%20/converter.dart';
 

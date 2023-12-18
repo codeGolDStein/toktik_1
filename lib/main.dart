@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'homepage/home.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
+@immutable
+class WidgetsFlutterBinding {
+  // Correct constructor for an immutable class
+  const WidgetsFlutterBinding();
+}
+
 class MyApp extends StatelessWidget {
+
+  // WidgetsFlutterBinding widgetsFlutterBinding = const WidgetsFlutterBinding();
+
+  // widgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   const MyApp({Key? key}) : super(key: key);
 
   @override
