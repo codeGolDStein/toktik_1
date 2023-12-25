@@ -35,11 +35,18 @@ async function fetchFromGpt(message) {
  */
 class InfoText {
   /**
-   * Creates an instance of InfoText.
    * @param {string} response - The response string containing
    * header and text separated by a line break.
+   *
+   * @param {string} infoTextTopic - The topic of the responded Text
    */
-  constructor(response) {
+  constructor(response, infoTextTopic) {
+    /**
+    * The header of the information text.
+    * @type {string}
+    */
+    this.topic = infoTextTopic;
+
     /**
      * The header of the information text.
      * @type {string}
@@ -72,6 +79,7 @@ class InfoText {
    */
   toJson() {
     return {
+      "topic": this.topic,
       "header": this.header,
       "text": this.text,
     };
@@ -160,6 +168,6 @@ class Prompt {
 
 module.exports = {
   InfoText,
-  PromptGenerator: Prompt,
+  Prompt,
   fetchFromGpt,
 };

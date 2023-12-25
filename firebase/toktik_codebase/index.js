@@ -9,22 +9,24 @@ admin.initializeApp(functions.config().firebase);
 exports.myScheduledCloudFunction = functions.pubsub.schedule("* * * * *").
     timeZone("America/New_York").
     onRun(async (context) => {
-      // Initializing Prompt Generator:
-      const promptGenerator = new apiModule2.PromptGenerator();
+      // Initializing Prompt Class:
+      const prompt = new apiModule2.Prompt();
       // Fetching Text from ChatGpt:
-      const newInfoTextString = await apiModule2.
-          fetchFromGpt(promptGenerator.getFactText(75, "German"));
+      const chatGptResponse = await apiModule2.
+          fetchFromGpt(prompt.text);
       // mit await kann man promises konvertieren
       // console.log("Response: " + newInfoTextString);
       // Converting Test to Class InfoText:
-      const newInfoTextData = new apiModule2.InfoText(newInfoTextString);
+      const newInfoTextData = new apiModule2.
+          InfoText(chatGptResponse, prompt.topic);
       // console.log(newInfoTextData);
+      console.log("Topic: " + newInfoTextData.topic);
       console.log("Header: " + newInfoTextData.header);
       console.log("Text: " + newInfoTextData.text);
       // Converting Data to Json:
       const newInfoTextJson = newInfoTextData.toJson();
       // Adding Data to Collection
-      const collection = admin.firestore().collection("Random");
+      const collection = admin.firestore().collection("InfoTexts");
       collection.add(newInfoTextJson);
       return null;
     });
