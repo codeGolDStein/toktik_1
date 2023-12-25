@@ -1,0 +1,25 @@
+Ich möchte mein Wissen im Thema _____ verbessern. Schreibe mir 
+dazu einen Text mit folegenden Attributen:
+
+- Sprache: ______
+- Der Text MUSS eine passende Überschrifft haben.
+- Nach der Überschrifft Steht IMMER eine Zeile Abstand
+- Der Text darf nicht mehr als ____ Wörter haben.
+- Er sollte das Wissen des Lesers erweitern. Das heißt 
+  es kann gerne etwas sein was man davor noch nie gehört
+  oder gelesen hat.
+
+Ich habe eine App diese bietet dem Nutzer die Möglichkeit sein Allgemeinwissen zu erweitern, in dem 
+er wie bei Tik Tok immer weiter nach unten scrollt und So immer neu InfoTexte angezeigt bekommt.
+Ich möchte wissen wie ich in Firebase meine Daten struktoriere.
+
+Daten die ich an den Nutzer weitergebe:
+    - Einen Informativen Text über ein beliebiges Thema das 75 - 100 Worte lang ist
+        - diesen Generiere ich mit einer API und speicher ihn über eine cloud schedule function ab.
+
+Daten die ich vom Nutzer sammle:
+    - Wie viel Zeit der Nutzer auf den jeweiligen Themen verbringt.
+
+Ich möchte alle InfoTexte die in firestore gespeichert sind den Themen nach an ordnen aber zufällig 
+an den User zurück geben. Wie kann ich das alles am besten struktorieren?
+

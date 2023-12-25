@@ -7,13 +7,6 @@
 -   Hat man zu viele Pages in der liste von home kann es zu Problemen 
 
 
-Ich möchte mein Wissen im Thema _____ verbessern. Schreibe mir 
-dazu einen Text mit folegenden Attributen:
 
-- Sprache: ______
-- Der Text MUSS eine passende Überschrifft haben.
-- Nach der Überschrifft Steht IMMER eine Zeile Abstand
-- Der Text darf nicht mehr als ____ Wörter haben.
-- Er sollte das Wissen des Lesers erweitern. Das heißt 
-  es kann gerne etwas sein was man davor noch nie gehört
-  oder gelesen hat.
+
+

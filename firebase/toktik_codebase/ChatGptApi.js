@@ -66,7 +66,6 @@ class InfoText {
     return [header.trim(), content];
   }
 
-
   /**
    * Converts the InfoText instance to JSON format.
    * @return {Object} The JSON representation of the InfoText instance.
@@ -82,7 +81,7 @@ class InfoText {
 /**
  * Klasse für die Erstellung von Text-Prompts.
  */
-class PromptGenerator {
+class Prompt {
   /**
    * Konstruktor für die Prompt-Klasse.
    */
@@ -91,7 +90,7 @@ class PromptGenerator {
      * Liste der verfügbaren Themen.
      * @type {string[]}
      */
-    this.topics = [
+    const topics = [
       "Geschichte",
       "Politik",
       "Wirtschaft",
@@ -106,16 +105,19 @@ class PromptGenerator {
       "Musik",
       "Kunst",
     ];
+
+    this.topic = this.getRandomTopic(topics);
+    this.text = this.getFactText(75, "German", this.topic);
   }
 
   /**
    * Gibt ein zufälliges Thema aus der Liste zurück.
+   * @param {string[]} topicList - Die Liste der verfügbaren Themen.
    * @return {string} Ein zufälliges Thema.
    */
-  getRandomTopic() {
-    const randomInt = Math.floor(Math.random() * this.topics.length);
-    const topicString = this.topics[randomInt];
-    return topicString.substring(6);
+  getRandomTopic(topicList) {
+    const randomInt = Math.floor(Math.random() * topicList.length);
+    return topicList[randomInt];
   }
 
   /**
@@ -158,6 +160,6 @@ class PromptGenerator {
 
 module.exports = {
   InfoText,
-  PromptGenerator,
+  PromptGenerator: Prompt,
   fetchFromGpt,
 };
