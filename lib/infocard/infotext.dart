@@ -5,12 +5,14 @@ import 'dart:ffi';
 // and seperates the header from the Text
 
 class InfoText {
-  late String header;
-  late String text;
+  late String mTopic; 
+  late String mHeader;
+  late String mText;
   
-  InfoText(String response) {
-    header = seperateText(response)[0];
-    text = seperateText(response)[1];
+  InfoText(String topic, String header, String text) {
+    mTopic = topic;
+    mHeader = header;
+    mText = text;
   }
 
   List<String> seperateText(String prompt) {
@@ -37,9 +39,10 @@ class InfoText {
   }
 
     Map<String, dynamic> toJson() {
-    return {
-      'header': header,
-      'text': text,
+    return { 
+      "topic" : mTopic,
+      'header': mHeader,
+      'text': mText,
     };
   }
 }

@@ -54,8 +54,8 @@ class _HomeState extends State<Home> {
             // String newtext = successState.text;
             List<Widget> updatedPages = List.from(_pages);
             updatedPages[_loadingqueue.first] = InfoCard(
-                title: successState.infotext.header,
-                body: successState.infotext.text);
+                title: successState.infotext.mHeader,
+                body: successState.infotext.mText);
                 // title: "title test",
                 // body: "body test");
             _pages = updatedPages;
@@ -89,11 +89,11 @@ class _HomeState extends State<Home> {
             final successState = state as HomeSuccessNewPageState;
             // String newtext = successState.text;
             List<Widget> updatedPages = List.from(_pages);
-            log("Header: " + successState.infotext.header);
-            log("Text: " + successState.infotext.text);
+            log("Header: " + successState.infotext.mHeader);
+            log("Text: " + successState.infotext.mText);
             updatedPages[_loadingqueue.first] = InfoCard(
-                title: successState.infotext.header,
-                body: successState.infotext.text);
+                title: successState.infotext.mHeader,
+                body: successState.infotext.mText);
                 // title: "test",
                 // body: "body test");
             _loadingqueue.removeFirst();

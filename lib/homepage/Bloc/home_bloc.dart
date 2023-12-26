@@ -9,6 +9,7 @@ import 'package:toktik/OpenAiApi/prompt.dart';
 import 'package:toktik/OpenAiApi/api_services.dart';
 import 'package:toktik/infocard/infotext.dart';
 import 'package:toktik/usefull%20/converter.dart';
+import '../../FireBaseApi/firebase_service.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
@@ -23,9 +24,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       try {
         emit(HomeLoadingNewPageState());
         PromptGenerator promptGenerator = PromptGenerator();
-        String infotext =  await ApiService.fetchFromGpt(promptGenerator.getFactText(75, "german")); 
-        log(infotext.toString());
-        emit(HomeSuccessNewPageState(infotext: InfoText(infotext)));
+        // String infotext =  await ApiService.fetchFromGpt(promptGenerator.getFactText(75, "german")); 
+        // log(infotext.toString());
+        InfoText infoText = await fetchRandomText();
+        emit(HomeSuccessNewPageState(infotext: infoText));
       } catch(e){
         log("Fehler bei lastpage down: $e");
       }
