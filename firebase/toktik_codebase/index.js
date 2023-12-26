@@ -14,7 +14,6 @@ exports.myScheduledCloudFunction = functions.pubsub.schedule("* * * * *").
       // Fetching Text from ChatGpt:
       const chatGptResponse = await apiModule2.
           fetchFromGpt(prompt.text);
-      // mit await kann man promises konvertieren
       // console.log("Response: " + newInfoTextString);
       // Converting Test to Class InfoText:
       const newInfoTextData = new apiModule2.

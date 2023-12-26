@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 import 'homepage/home.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(name: null,
+                               options: DefaultFirebaseOptions.currentPlatform);
+  // if (Firebase.apps.length == 0) {
+  //   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // }else {
+  //   Firebase.app(); // if already initialized, use that one
+  // }
   runApp(const MyApp());
 }
 
-@immutable
-class WidgetsFlutterBinding {
-  // Correct constructor for an immutable class
-  const WidgetsFlutterBinding();
-}
+// @immutable
+// class WidgetsFlutterBinding {
+//   // Correct constructor for an immutable class
+//   const WidgetsFlutterBinding();
+// }
 
 class MyApp extends StatelessWidget {
-
-  // WidgetsFlutterBinding widgetsFlutterBinding = const WidgetsFlutterBinding();
-
-  // widgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
     );
