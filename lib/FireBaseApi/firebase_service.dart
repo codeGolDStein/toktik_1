@@ -1,26 +1,31 @@
 import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toktik/infocard/infotext.dart';
+import 'dart:developer' as developer;
 
 Future<InfoText> fetchRandomText() async {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   Map<String, dynamic> randomText = {}; // Initialize with an empty map
 
-  try {
+  // try {
     // Zähle die Gesamtanzahl der Texte in der informativeTexte-Sammlung
-    QuerySnapshot countQuery = await firestore.collection('informativeTexte').get();
+    QuerySnapshot countQuery = await firestore.collection('InfoTexts').get();
     int totalTexts = countQuery.size;
+    // developer.log(totalTexts.toString());
 
     // Generiere eine zufällige Zahl, die als Index für den abzurufenden Text verwendet wird
     Random random = Random();
-    int randomIndex = random.nextInt(totalTexts);
+    int randomIndex = random.nextInt(totalTexts + 1);
+    developer.log(randomIndex.toString());
 
     // Greife auf den Text mit dem zufälligen Index zu
     QuerySnapshot randomTextQuery = await firestore
         .collection('InfoTexts')
         .orderBy('topic')
-        .startAfter([randomIndex])
         .limit(1)
+        .startAfter([randomIndex])
+        // .startAfter([1])
         .get();
 
     // Extrahiere den zufälligen Text
@@ -33,9 +38,9 @@ Future<InfoText> fetchRandomText() async {
       randomText["header"] ?? "",
       randomText["text"] ?? "",
     );
-  } catch (error) {
-    print('Error: $error');
-    throw error;
-  }
+  // } catch (error) {
+  //   developer.log('fetchRandomText Error: $error');
+  //   throw error;
+  // }
 }
 

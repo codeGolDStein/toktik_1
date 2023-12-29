@@ -23,10 +23,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     LastPageDownEvent event, Emitter<HomeState> emit) async {
       try {
         emit(HomeLoadingNewPageState());
-        PromptGenerator promptGenerator = PromptGenerator();
+        // PromptGenerator promptGenerator = PromptGenerator();
         // String infotext =  await ApiService.fetchFromGpt(promptGenerator.getFactText(75, "german")); 
         // log(infotext.toString());
         InfoText infoText = await fetchRandomText();
+        log(infoText.mText);
         emit(HomeSuccessNewPageState(infotext: infoText));
       } catch(e){
         log("Fehler bei lastpage down: $e");
