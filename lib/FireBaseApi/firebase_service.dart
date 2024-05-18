@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toktik/infocard/infotext.dart';
 import 'dart:developer' as developer;
 
-Future<InfoText> fetchRandomText() async {
+Future<InfoText> fetchText() async {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   Map<String, dynamic> randomText = {}; // Initialize with an empty map
 
@@ -25,7 +25,6 @@ Future<InfoText> fetchRandomText() async {
         .orderBy('topic')
         .limit(1)
         .startAfter([randomIndex])
-        // .startAfter([1])
         .get();
 
     // Extrahiere den zufälligen Text
@@ -38,9 +37,46 @@ Future<InfoText> fetchRandomText() async {
       randomText["header"] ?? "",
       randomText["text"] ?? "",
     );
-  // } catch (error) {
-  //   developer.log('fetchRandomText Error: $error');
-  //   throw error;
-  // }
 }
+
+// Future<InfoText> fetchText() async{
+
+//   FirebaseFirestore firestore = FirebaseFirestore.instance;
+//   Map<String, dynamic> text = {};
+//   Random random = Random();
+//   int randomIndex = random.nextInt(10);
+
+//   QuerySnapshot countQuery = await firestore.collection('InfoTexts').get();
+
+//   // QuerySnapshot randomTextQuery = await firestore
+//   //   .collection('InfoTexts')
+//   //   .orderBy('topic')
+//   //   .limit(1)
+//   //   .startAfter([randomIndex])
+//   //   .get();
+
+//   // Zuerst die Anzahl der Dokumente in der Sammlung abrufen
+//   QuerySnapshot snapshot = await firestore.collection('InfoTexts').get();
+//   int totalDocuments = snapshot.docs.length;
+
+//   // Das Dokument anhand des zufälligen Index abrufen
+//   QueryDocumentSnapshot randomDocument = snapshot.docs[randomIndex];
+
+
+//   // Daten aus dem Dokument auslesen
+//   var data = randomDocument.data();
+
+//   // randomTextQuery.docs.forEach ((doc){
+//   //     text = doc.data() as Map<String, dynamic>;
+//   // });
+//   if (data != null){
+//     String topic = data["topic"];
+//   }
+      
+//   return InfoText(
+//       data["topic"] ?? "",
+//       text["header"] ?? "",
+//       text["text"] ?? "",
+//   );
+// }
 

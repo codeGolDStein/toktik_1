@@ -26,7 +26,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         // PromptGenerator promptGenerator = PromptGenerator();
         // String infotext =  await ApiService.fetchFromGpt(promptGenerator.getFactText(75, "german")); 
         // log(infotext.toString());
-        InfoText infoText = await fetchRandomText();
+        InfoText infoText = await fetchText();
         log(infoText.mText);
         emit(HomeSuccessNewPageState(infotext: infoText));
       } catch(e){
